@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PipMan (v2.4) — Modern Python Package Manager for Windows</title>
+    <meta name="description" content="Download PipMan (v2.4), the sleek modern desktop GUI package manager for Python pip on Windows. Real-time logging, instant search, disk size inspector, and 1-click updates.">
+    <meta name="keywords" content="PipMan, pip GUI, Python package manager, Windows pip manager, Python GUI, pip standalone exe">
+    <meta name="author" content="PipMan Team">
+    <meta name="theme-color" content="#0b1214">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PipMan (v2.4) — Modern Python Package Manager">
+    <meta property="og:description" content="A visual desktop GUI for pip with live terminal logs, package inspection, and zero setup.">
+    
+    <!-- Google Fonts: Outfit, Inter, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Ambient Glow -->
+    <div class="bg-grid-pattern"></div>
+    <div class="glow-orb glow-top-left"></div>
+    <div class="glow-orb glow-bottom-right"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <span class="brand-icon">📦</span>
+                <span class="brand-text">PipMan</span>
+                <span class="version-tag">v2.4</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#demo">Live Demo</a>
+                <a href="#comparison">Compare</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="downloads/PipMan_Standalone.exe" download class="btn btn-nav-download" id="nav-download-btn">
+                    <span>⬇ Download .EXE</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text">v2.4 Universal Release • Windows 10 / 11 Ready</span>
+                </div>
+
+                <h1 class="hero-title">
+                    The Modern Python Package Manager <span class="gradient-text">for Windows</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    A blazing-fast, visual desktop GUI for <code class="inline-code">pip</code>. Inspect disk consumption in real-time, search through hundreds of packages instantly, and update or uninstall with zero command-line headaches.
+                </p>
+
+                <div class="hero-cta-group">
+                    <a href="downloads/PipMan_Standalone.exe" download class="btn btn-primary btn-hero-dl" id="hero-download-btn">
+                        <div class="btn-content">
+                            <span class="btn-icon">⬇</span>
+                            <div class="btn-text-group">
+                                <span class="btn-main-text">Download Standalone .EXE</span>
+                                <span class="btn-sub-text">Single Portable File • ~11.9 MB</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="downloads/PipMan_v2.4_Portable.zip" download class="btn btn-secondary" id="hero-zip-btn">
+                        <span class="btn-icon">📦</span>
+                        <div class="btn-text-group">
+                            <span class="btn-main-text">Download Portable .ZIP</span>
+                            <span class="btn-sub-text">Folder Edition • Instant Start</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hero-meta-badges">
+                    <span class="meta-item">✓ Zero Installation Required</span>
+                    <span class="meta-item">✓ Auto-detects Python, venv & Conda</span>
+                    <span class="meta-item">✓ 100% Free & Open</span>
+                </div>
+            </div>
+
+            <!-- Interactive App Simulator Preview -->
+            <div class="container app-preview-wrapper" id="demo">
+                <div class="preview-header-bar">
+                    <div class="preview-dot red"></div>
+                    <div class="preview-dot yellow"></div>
+                    <div class="preview-dot green"></div>
+                    <span class="preview-title">PipMan (v2.4) — Live Interactive UI Preview</span>
+                </div>
+
+                <div class="sim-window">
+                    <!-- Top Bar -->
+                    <div class="sim-top-bar">
+                        <div class="sim-brand">
+                            <span class="sim-brand-title">PipMan</span>
+                            <span class="sim-brand-ver">(v2.4)</span>
+                        </div>
+                        <div class="sim-search-container">
+                            <div class="sim-search-box">
+                                <input type="text" id="sim-search-input" placeholder="Search installed packages..." autocomplete="off">
+                                <span class="sim-search-icon">🔍</span>
+                            </div>
+                            <button class="sim-btn-icon" id="sim-refresh-btn" title="Refresh packages">↻</button>
+                        </div>
+                    </div>
+
+                    <!-- Section Header -->
+                    <div class="sim-sec-header">
+                        <span class="sim-sec-title" id="sim-package-count">INSTALLED PACKAGES (7)</span>
+                        <button class="sim-btn-refresh-pill" id="sim-sec-refresh-btn">Refresh</button>
+                    </div>
+
+                    <!-- Table Header -->
+                    <div class="sim-table-header">
+                        <div class="sim-col col-name" data-sort="name">Package Name <span class="sort-arrow">⇅</span></div>
+                        <div class="sim-col col-ver" data-sort="ver">Current Version <span class="sort-arrow">⇅</span></div>
+                        <div class="sim-col col-latest" data-sort="latest">Latest Version <span class="sort-arrow">⇅</span></div>
+                        <div class="sim-col col-size" data-sort="size">Size <span class="sort-arrow">⇅</span></div>
+                        <div class="sim-col col-date" data-sort="date">Installed Date <span class="sort-arrow">⇅</span></div>
+                        <div class="sim-col col-actions">Actions</div>
+                    </div>
+
+                    <!-- Table Body -->
+                    <div class="sim-table-body" id="sim-table-rows">
+                        <!-- Populated dynamically by script.js -->
+                    </div>
+
+                    <!-- Log & Activity Terminal -->
+                    <div class="sim-log-panel" id="sim-log-container">
+                        <div class="sim-log-header">
+                            <span class="sim-log-title">Log & Activity</span>
+                            <div class="sim-log-controls">
+                                <span class="sim-log-btn" id="sim-log-toggle" title="Toggle Panel">—</span>
+                                <span class="sim-log-btn" id="sim-log-clear" title="Clear Console">✕</span>
+                            </div>
+                        </div>
+                        <div class="sim-terminal-body" id="sim-terminal-content">
+                            <div class="term-line term-info">PipMan (v2.4) initialized. Active Python: C:\Python313\python.exe</div>
+                            <div class="term-line term-success">Loaded 7 installed packages in environment.</div>
+                            <div class="term-line"><span class="term-prompt">pipman ~$ </span><span class="term-cmd">Ready for commands.</span></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="preview-caption">💡 Try typing in the search bar above, clicking column headers to sort, or hitting <strong>Update</strong> / <strong>Uninstall</strong> to see the live terminal logs in action!</p>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="section features-section" id="features">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <span class="section-tag">Powerful & Lightweight</span>
+                    <h2 class="section-title">Everything you need to master your Python environment</h2>
+                    <p class="section-desc">Designed from the ground up for speed, visual clarity, and bulletproof reliability across all Windows machines.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🚀</div>
+                        <h3 class="feature-title">Universal & Portable</h3>
+                        <p class="feature-desc">Single standalone executable. Auto-detects virtual environments, Conda paths, system Python, and Windows registry with zero setup required.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">📊</div>
+                        <h3 class="feature-title">True Disk Usage Inspector</h3>
+                        <p class="feature-desc">Accurately calculates real on-disk footprint in MB and KB for every package by inspecting RECORD metadata and site-packages directories.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🔍</div>
+                        <h3 class="feature-title">Instant Search & Sorting</h3>
+                        <p class="feature-desc">Filter through hundreds of installed libraries as you type. Click any column header to sort by package size, install date, or name.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">⚡</div>
+                        <h3 class="feature-title">Real-Time Asynchronous Terminal</h3>
+                        <p class="feature-desc">Never watch your GUI freeze during pip operations. Background workers stream live stdout/stderr directly into the embedded Log terminal.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🔄</div>
+                        <h3 class="feature-title">1-Click Updates & PyPI Checks</h3>
+                        <p class="feature-desc">Automatically queries PyPI to highlight outdated packages and lets you upgrade directly with a single click.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-wrapper">🛡️</div>
+                        <h3 class="feature-title">Safe Uninstaller</h3>
+                        <p class="feature-desc">Interactive confirmation dialogues prevent accidental package removal, automatically refreshing your list upon completion.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Comparison Matrix -->
+        <section class="section comparison-section" id="comparison">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <span class="section-tag">Why PipMan?</span>
+                    <h2 class="section-title">PipMan vs Traditional CLI & Tools</h2>
+                    <p class="section-desc">See how PipMan transforms Python package management on Windows.</p>
+                </div>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th class="highlight-col">PipMan (v2.4)</th>
+                                <th>Standard Pip CLI</th>
+                                <th>Generic GUI Tools</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Instant Visual GUI</td>
+                                <td class="highlight-col"><span class="check">✓</span> Modern Cyber Dark Theme</td>
+                                <td><span class="cross">✕</span> Text only</td>
+                                <td><span class="neutral">~</span> Outdated Tkinter default</td>
+                            </tr>
+                            <tr>
+                                <td>Real Disk Space Calculation</td>
+                                <td class="highlight-col"><span class="check">✓</span> Exact MB/KB calculation</td>
+                                <td><span class="cross">✕</span> Not supported natively</td>
+                                <td><span class="cross">✕</span> Shows 0 KB or missing</td>
+                            </tr>
+                            <tr>
+                                <td>Live Search & Multi-Sort</td>
+                                <td class="highlight-col"><span class="check">✓</span> Sub-millisecond filter</td>
+                                <td><span class="neutral">~</span> grep / findstr piping</td>
+                                <td><span class="cross">✕</span> Basic or static</td>
+                            </tr>
+                            <tr>
+                                <td>Non-Blocking Log Terminal</td>
+                                <td class="highlight-col"><span class="check">✓</span> Real-time async streaming</td>
+                                <td><span class="neutral">~</span> Terminal blocking</td>
+                                <td><span class="cross">✕</span> GUI freezes on update</td>
+                            </tr>
+                            <tr>
+                                <td>1-Click Portable Executable</td>
+                                <td class="highlight-col"><span class="check">✓</span> Zero dependencies</td>
+                                <td><span class="cross">✕</span> Requires CLI setup</td>
+                                <td><span class="neutral">~</span> Large installation bundles</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Start & How to Use -->
+        <section class="section quickstart-section">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <span class="section-tag">Quick Start</span>
+                    <h2 class="section-title">Up and Running in 3 Easy Steps</h2>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <h3 class="step-title">Download</h3>
+                        <p class="step-desc">Grab <code class="inline-code">PipMan_Standalone.exe</code> directly from this page. No installer or admin privileges required.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <h3 class="step-title">Double-Click to Launch</h3>
+                        <p class="step-desc">Open the file. PipMan automatically connects to your system Python, virtual environment, or Conda installation.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <h3 class="step-title">Manage with Ease</h3>
+                        <p class="step-desc">Inspect sizes, search, upgrade, and remove packages with intuitive visual controls and live terminal output.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section faq-section" id="faq">
+            <div class="container faq-container">
+                <div class="section-heading text-center">
+                    <span class="section-tag">Got Questions?</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Does PipMan work on any Windows computer?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! PipMan is packaged as a standalone 64-bit Windows executable compatible with Windows 10, Windows 11, and Windows Server. You can place it on a USB drive or move it to any PC.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What happens if Python is not installed on the destination PC?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>The GUI will still launch cleanly without crashing. PipMan will display a helpful guide card with a 1-click button to download Python from python.org or browse for a portable Python interpreter.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How does PipMan calculate package size so accurately?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>PipMan uses a multi-tier inspection algorithm: it parses package RECORD metadata, checks distribution file tables, and calculates actual disk consumption from site-packages directories.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Does it support virtual environments (venv) and Conda?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes! If an active virtual environment (<code class="inline-code">VIRTUAL_ENV</code>) or Conda environment (<code class="inline-code">CONDA_PREFIX</code>) is set, PipMan will prioritize and manage that specific environment automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Download Callout Banner -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-banner">
+                    <div class="cta-glow"></div>
+                    <div class="cta-content">
+                        <h2 class="cta-title">Ready to take control of your Python packages?</h2>
+                        <p class="cta-desc">Download PipMan (v2.4) now and experience seamless visual package management.</p>
+                        <div class="cta-btn-group">
+                            <a href="downloads/PipMan_Standalone.exe" download class="btn btn-primary btn-cta">
+                                <span class="btn-icon">⬇</span>
+                                <span>Download Standalone (.exe)</span>
+                            </a>
+                            <a href="downloads/PipMan_v2.4_Portable.zip" download class="btn btn-secondary btn-cta">
+                                <span class="btn-icon">📦</span>
+                                <span>Download Portable (.zip)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="brand-logo">
+                    <span class="brand-icon">📦</span>
+                    <span class="brand-text">PipMan</span>
+                    <span class="version-tag">v2.4</span>
+                </div>
+                <p class="footer-tagline">Visual Python package manager for modern Windows developers.</p>
+            </div>
+
+            <div class="footer-links-group">
+                <div class="footer-col">
+                    <h4>Direct Downloads</h4>
+                    <ul>
+                        <li><a href="downloads/PipMan_Standalone.exe" download>PipMan_Standalone.exe</a></li>
+                        <li><a href="downloads/PipMan_v2.4_Portable.zip" download>PipMan_v2.4_Portable.zip</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demo">Live Demo</a></li>
+                        <li><a href="#comparison">Comparison</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 PipMan. Built for the Python community. Free & Open Source.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
