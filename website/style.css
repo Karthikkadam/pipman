@@ -235,6 +235,21 @@ h1, h2, h3, h4 {
     transform: translateY(-2px);
 }
 
+.btn-nav-github {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--bg-card-border);
+    padding: 7px 14px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+.btn-nav-github:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--text-muted);
+    color: #ffffff;
+}
+
 .btn-nav-download {
     background: rgba(46, 229, 157, 0.12);
     color: var(--accent-mint);

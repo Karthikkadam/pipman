@@ -1,11 +1,14 @@
 # 📦 PipMan (v2.4) — Modern Python Package Manager for Windows
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Release-v2.4-10b981?style=for-the-badge&logo=python&logoColor=white" alt="Version 2.4" />
+  <a href="https://pipman.freedev.app/"><img src="https://img.shields.io/badge/Website-pipman.freedev.app-10b981?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website" /></a>
+  <img src="https://img.shields.io/badge/Release-v2.4-2ee59d?style=for-the-badge&logo=python&logoColor=black" alt="Version 2.4" />
   <img src="https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-38bdf8?style=for-the-badge&logo=windows&logoColor=white" alt="Windows 10/11" />
   <img src="https://img.shields.io/badge/Python-3.8%2B-facc15?style=for-the-badge&logo=python&logoColor=black" alt="Python 3.8+" />
-  <img src="https://img.shields.io/badge/License-MIT-2ee59d?style=for-the-badge" alt="License MIT" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-2dd4bf?style=for-the-badge" alt="License MIT" /></a>
 </p>
+
+> 🌐 **Live Website & Interactive Web Simulator**: [**https://pipman.freedev.app/**](https://pipman.freedev.app/)
 
 A sleek, modern visual desktop GUI for managing `pip` packages on Windows. Inspect on-disk package footprint in real-time, search instantly across hundreds of libraries, and execute asynchronous updates or uninstalls with a live streaming terminal.
 
